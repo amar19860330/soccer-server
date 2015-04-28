@@ -1,68 +1,27 @@
 package com.amar.soccer.code.model;
 
+import com.amar.soccer.code.base.FCode;
+
 public class UserModel extends BaseModel
 {
+	@FCode(index=1)
 	private String username;
+	@FCode(index=2)
 	private String userpw;
+	@FCode(index=3)
 	private String phone;
+	@FCode(index=4)
 	private String email;
 	
 	/**
 	 * 1男，2女
 	 */
+	@FCode(index=5)
 	private int sex;
-	
-	@Override
-	public int [] toBytes()
-	{
-		return null;
-	}
-	@Override
-	public int [] getDataLengh()
-	{
-		return new int[]{20,20,20,40};
-	}
-	
-	public String getUsername()
-	{
-		return username;
-	}
-	public void setUsername( String username )
-	{
-		this.username = username;
-	}
-	public String getUserpw()
-	{
-		return userpw;
-	}
-	public void setUserpw( String userpw )
-	{
-		this.userpw = userpw;
-	}
-	public String getPhone()
-	{
-		return phone;
-	}
-	public void setPhone( String phone )
-	{
-		this.phone = phone;
-	}
-	public String getEmail()
-	{
-		return email;
-	}
-	public void setEmail( String email )
-	{
-		this.email = email;
-	}
 
-	public int getSex()
+	
+	public static void main( String [] args )
 	{
-		return sex;
-	}
 
-	public void setSex( int sex )
-	{
-		this.sex = sex;
 	}
 }

@@ -13,10 +13,9 @@ public class DataTrans
 	public static int Integer_Max = Integer.MAX_VALUE - 1;
 
 	/**
-	 * 
 	 * @param first
 	 * @param second
-	 * @return 返回 first 和  second 连接起来的数组
+	 * @return 返回 first 和 second 连接起来的数组
 	 */
 	public static byte [] connectAB( byte [] first , byte [] second )
 	{
@@ -28,52 +27,8 @@ public class DataTrans
 		return newArray;
 	}
 
-	/**
-	 * 
-	 * @param originArray
-	 * @param length
-	 * @return 如果 originArray 的长度超过 length，就截断它 ，否则还是返回 originArray 
-	 */
-	public static byte [] cutArrayIfBeyondLimit( byte [] originArray , int length )
-	{
-		if ( originArray.length > length )
-		{
-			byte [] newArray = new byte [ length ];
-			System.arraycopy( originArray , 0 , newArray , 0 , length );
-			return newArray;
-		}
-		else
-		{
-			return originArray;
-		}
-	}
-
-	public static byte [] toBytes( String originData , int length )
-	{
-		byte [] originArray = null;
-		
-		try
-		{
-			originArray = originData.getBytes( Constant.App_Code );
-			if ( originArray.length > length )
-			{
-				originArray = cutArrayIfBeyondLimit( originArray , length );
-				throw new DataBeyondLimitException();
-			}
-		}
-		catch ( UnsupportedEncodingException e )
-		{
-			e.printStackTrace();
-		}
-		catch ( DataBeyondLimitException e )
-		{
-			e.printStackTrace();
-		}
-		return originArray;
-	}
-
 	
-	public static byte [] toBytes( int originData )
+	public static byte [] toBytes4( int originData )
 	{
 		byte [] result = null;
 		try
@@ -84,7 +39,7 @@ public class DataTrans
 			}
 			else
 			{
-				result = intToByte( originData );
+				result = intToByte4( originData );
 			}
 		}
 		catch ( DataBeyondLimitException e )
@@ -94,7 +49,7 @@ public class DataTrans
 		return result;
 	}
 
-	public static int bytesToInt( byte [] bytes )
+	public static int bytes4ToInt( byte [] bytes )
 	{
 		int addr = bytes[ 0 ] & 0xFF;
 
@@ -107,7 +62,7 @@ public class DataTrans
 		return addr;
 	}
 
-	public static byte [] intToByte( int i )
+	public static byte [] intToByte4( int i )
 	{
 		byte [] abyte0 = new byte [ 4 ];
 
@@ -118,6 +73,22 @@ public class DataTrans
 		abyte0[ 2 ] = ( byte ) ( ( 0xff0000 & i ) >> 16 );
 
 		abyte0[ 3 ] = ( byte ) ( ( 0xff000000 & i ) >> 24 );
+
+		return abyte0;
+	}
+
+	public static int bytesToInt1( byte [] bytes )
+	{
+		int addr = bytes[ 0 ] & 0xFF;
+
+		return addr;
+	}
+
+	public static byte [] intToByte1( int i )
+	{
+		byte [] abyte0 = new byte [ 4 ];
+
+		abyte0[ 0 ] = ( byte ) ( 0xff & i );
 
 		return abyte0;
 	}
