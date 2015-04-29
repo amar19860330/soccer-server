@@ -18,5 +18,5 @@ public class Constant
 	public static final int Request_Modify_Pw = 2;
 	public static final int Request_Regist = 3;
 	public static final int Request_Forget_Pw = 4;
-	
+	public static final int Request_Soccer_Message = 5;
 }
